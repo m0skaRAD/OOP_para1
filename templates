@@ -1,0 +1,136 @@
+#include <iostream>
+#include <vector>
+#include <initializer_list>
+using namespace std;
+
+/*template<typename T>
+T Max(T a, T b) {
+    return (a > b) ? a : b;
+}*/
+
+/*template<typename T>
+class Arracontainer {
+private:
+    T elements[10];
+public:
+    void set(int index, T val) {
+        elements[index] = val;
+    }
+    T get(int index) {
+        return elements[index];
+    }
+};*/
+
+/*template<typename T>
+class Box {
+private:
+    T value;
+public:
+    Box(T val): value(val){}
+    void Print() {
+        cout << "Value: " << value << endl;
+    };
+};
+
+template<>
+class Box<bool> {
+private:
+    bool value;
+public:
+    Box(bool val): value(val) {}
+    void Print() {
+        cout << "Value: " << (value ? "Yes" : "No") << endl;
+    }
+};
+*/
+
+/*void PrintAll() {
+    cout << "\n";
+}
+
+template<typename T, typename ...Args>
+void PrintAll(T first, Args... args) {
+    cout << first << " ";
+    PrintAll(args...);
+}*/
+
+
+class NumberList {
+private:
+    vector<int> number;
+public:
+    NumberList(initializer_list<int> list) {
+        for (int x : list) {
+            number.push_back(x);
+        }
+    }
+    void Print() {
+        for (int x : number) {
+            cout << x << " ";
+        }
+    }
+};
+
+
+
+int main()
+{
+    /*cout << Max(10, 20) << endl; //int - не явно
+    cout << Max<double>(5, 20.5); //double - явно*/
+
+    //Arracontainer<string>arr;
+    
+    /*Box<int> b1(10);
+    b1.Print();
+    Box<bool>b2(true);
+    b2.Print();*/
+
+    //PrintAll(1, 2.5, "Hello");
+
+    /*NumberList list = {10,20,30,40};
+    list.Print();*/
+
+    string s1; //empty string
+    string s2 = "Hello"; //ініціалізована строковим літералом
+    string s3(s2); //конструктор копіювання
+    string s4(5, 'A'); //повторення символу ("ААААА")
+    string s5("World", 3); //перші n символів
+    string s6("Hello world", 6, 5); //порядокз позиції 6 довжиною 5 ("world")
+
+
+
+    string str = "I love C++ coding";
+    cout << "Size/Length: " << str.size() << endl; //or str.length();
+    cout << "First: " << str.front() << endl; //I
+    cout << "Last: " << str.back() << endl; //g
+    cout << "Symbol: " << str.at(2) << endl; //l
+    cout << "Symbol: " << str[3] << endl; //l
+
+    string str2 = "Hello";
+    
+    //add to back     
+    str += " World"; //add string to the end
+    str.push_back('!'); //add last element
+    str.append("C++"); // add string to the end
+    
+    //insert + delete
+    str.insert(5, ","); //insert symbol on 5 index
+    str.erase(5, 1); //delete 1 symbol on 5 index
+    
+    //replace
+    str.replace(6, 5, "Friend"); //replace from 6 index 5 elements
+
+    //clear
+    str.pop_back(); //delete last symbol
+    str.clear(); //clear full array (string is empty)
+
+    //find substring
+    string text = "Welcome to C++ programming";
+    size_t pos = text.find("C++"); // find first index of the word
+    if (pos != string::npos) { //перевірка що ми не вийшли за межі масиву 
+        cout << "Substing was found on poition " << pos << endl;
+    }
+
+
+
+}
