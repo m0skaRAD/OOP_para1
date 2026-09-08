@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+
+template<typename T>
+class Array {
+private: 
+    int _size;
+    T* elements = new T[_size];
+public:
+    int GetSize() {
+        return size;
+    }
+    void SetSize(int size, int grow = 1) {
+        if (size > _size) {
+            T* elements1 = new T[size];
+            for (int i = 0; i < _size; i++) {
+                elements1[i] = elements[i];
+            }
+            elements1 = elements;
+            delete[] elements;
+        }
+        else if (size < _size) {
+            T* elements1 = new T[size];
+            for (int i = 0; i < size; i++) {
+                elements1[i] = elements[i];
+            }
+            elements1 = elements;
+            delete[] elements;
+        }
+    }
+
+};
+
+
+int main()
+{
+    std::cout << "Hello World!\n";
+}
