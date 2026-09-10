@@ -1,0 +1,132 @@
+#include <iostream>
+using namespace std;
+
+void skorochena(int& ch, int& zn) {
+	int x = ch;
+	int y = zn;
+	while (y != 0) {
+		int temp = y;
+		y = x % y;
+		x = temp;
+	}
+	ch /= x;
+	zn /= x;
+}
+
+
+class Drib {
+private:
+	int _chiselnik;
+	int _znamennuk;
+public:
+	Drib(int chiselnik, int znamennuk) {
+		Drib::_chiselnik = chiselnik;
+		Drib::_znamennuk = znamennuk;
+	}
+	void Print() {
+		cout << _chiselnik << "/" << _znamennuk << endl;
+	}
+	void MakeChisl() {
+		int ch;
+		cout << "Write a numerator - ";
+		cin >> ch;
+		_chiselnik = ch;
+	}
+	void MakeZnam() {
+		int zn;
+		cout << "Write the denominator - ";
+		cin >> zn;
+		_znamennuk = zn;
+	}
+	int Add() {
+		int ch, zn;
+		cout << "Write a numerator - ";
+		cin >> ch;
+		cout << "Write the denominator - ";
+		cin >> zn;
+		if (zn == 0) {
+			cout << endl;
+			return 0;
+		}
+		int tempIn = _znamennuk;
+		int tempOut = zn;
+		ch *= tempIn;
+		_chiselnik *= tempOut;
+		_znamennuk *= zn;
+
+		_chiselnik += ch;
+		skorochena(_chiselnik, _znamennuk);
+		cout << "Done ! \n" << _chiselnik << "/" << _znamennuk << endl;
+	}
+	
+	int Substr() {
+		int ch, zn;
+		cout << "Write a numerator - ";
+		cin >> ch;
+		cout << "Write the denominator - ";
+		cin >> zn;
+		if (zn == 0) {
+			cout << endl;
+			return 0;
+		}
+		int tempIn = _znamennuk;
+		int tempOut = zn;
+		ch *= tempIn;
+		_chiselnik *= tempOut;
+		_znamennuk *= zn;
+		_chiselnik -= ch;
+		skorochena(_chiselnik, _znamennuk);
+		cout << "Done ! \n" << _chiselnik << "/" << _znamennuk << endl;
+	}
+
+	int Mult() {
+		int ch, zn;
+		cout << "Write a numerator - ";
+		cin >> ch;
+		cout << "Write the denominator - ";
+		cin >> zn;
+		if (zn == 0) {
+			cout << endl;
+			return 0;
+		}
+		_znamennuk *= zn;
+		_chiselnik *= ch;
+		skorochena(_chiselnik, _znamennuk);
+		cout << "Done ! \n" << _chiselnik << "/" << _znamennuk << endl;
+	}
+
+	int Divide() {
+		int ch, zn;
+		cout << "Write a numerator - ";
+		cin >> ch;
+		cout << "Write the denominator - ";  
+		cin >> zn;
+		if (zn == 0) {
+			cout << endl;
+			return 0;
+		}
+		_znamennuk *= ch;
+		_chiselnik *= zn;
+		skorochena(_chiselnik, _znamennuk);
+		cout << "Done ! \n" << _chiselnik << "/" << _znamennuk << endl;
+	}
+
+
+};
+
+int main()
+{
+	Drib drib(1, 1);
+	drib.Print();
+	drib.MakeChisl();
+	drib.MakeZnam();
+	drib.Print();
+	cout << endl << endl;
+	drib.Add();
+	cout << endl << endl;
+	drib.Substr();
+	cout << endl << endl;
+	drib.Mult();
+	cout << endl << endl;
+	drib.Divide();
+}
