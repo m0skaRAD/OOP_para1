@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+class Laptop {
+private:
+    char* _brand;
+    double _price;
+public:
+    Laptop(const char* brand, double price) {
+        _brand = new char[strlen(brand) + 1];
+        strcpy_s(_brand, strlen(brand) + 1, brand);
+        _price = price;
+    }
+    ~Laptop() {
+        delete[] _brand;
+    }
+    void Info() {
+        cout << "Laptop: " << _brand << " price: " << _price << endl;
+    }
+
+};
+
+const int MaxSongName = 30;
+
+class Playlist {
+private:
+    char** _songs;
+    int _capacity;
+    int _count;
+public:
+    Playlist(const char** songs, int capacity, int count, int maxSongs) {
+        _capacity = capacity;
+        _count = count;
+        _songs = new char* [count];
+        for (int i = 0; i < count; i++) {
+            _songs[i] = new char[MaxSongName];
+            strcpy_s(_songs[i],MaxSongName, songs[i]);
+        }
+    }
+    ~Playlist() {
+        for (int i = 0; i < _count; i++) {
+            delete[] _songs[i];
+        }
+        delete[] _songs;
+    }
+    void addSong(const char* songName) {
+
+    }
+    void show() {
+        for (int i = 0; i < _count; i++) {
+            cout << _songs[i] << " ";
+        }
+    }
+};
+
+int main()
+{
+    //Laptop laptop1("Asus", 4000);
+    //laptop1.Info();
+
+    const char* arr[] = { "asda","asdwd" };
+    Playlist pl1(arr, 100, 2, 100);
+    pl1.show();
+}
